@@ -25,6 +25,15 @@ Route::middleware(['auth','verified','role:2'])
             ->name('home');
 });
 
+Route::middleware(['auth','verified','role:3'])
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function(){
+        Route::get('/home',[App\Http\Controllers\Admin\HomeController::class,'index'])
+            ->middleware(['auth', 'verified'])
+            ->name('home');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

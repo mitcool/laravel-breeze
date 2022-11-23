@@ -47,6 +47,9 @@ class User extends Authenticatable
         if($this->role_id == 1){
             $redirect_url = 'student.home';
         }
+        elseif($this->role_id ==3 ){
+            $redirect_url = 'admin.home';
+        }
         else{
             $redirect_url = 'teacher.home';
         }
